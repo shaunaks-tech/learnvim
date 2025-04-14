@@ -5,8 +5,6 @@ export default function LessonsPage() {
   const lessons = [
     { id: 1, title: 'Lesson 1: Hello World in Vim', description: 'Print your first output using Vim', progress: 100 },
     { id: 2, title: 'Lesson 2: Insert, Append & Open Line', description: 'Learn `i`, `a`, and `o` to manipulate lines', progress: 80 },
-    { id: 3, title: 'Lesson 3: Editing & Movement', description: 'Use `h`, `j`, `k`, `l` to move and edit', progress: 0 },
-    { id: 4, title: 'Lesson 4: Visual Mode & Deletion', description: 'Use `v`, `d`, `x` to select and delete', progress: 0 },
   ];
 
   return (

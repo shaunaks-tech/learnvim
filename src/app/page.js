@@ -1,18 +1,44 @@
 'use client';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 
 export default function HomePage() {
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    setDarkMode(prefersDark);
+  }, []);
+
+  const colors = darkMode
+    ? {
+        background: 'linear-gradient(135deg, #0f0f0f, #1c1c2e)',
+        text: '#f5f5f5',
+        card: 'rgba(255, 255, 255, 0.05)',
+        border: 'rgba(255, 255, 255, 0.1)',
+        blur: 'blur(12px)',
+        link: '#a6e3a1',
+        progress: '#7aa2f7',
+      }
+    : {
+        background: 'linear-gradient(135deg, #b0b4ba, #c2c7ce)',
+        text: '#1a1a1a',
+        card: 'rgba(200, 200, 200, 0.3)',
+        border: 'rgba(0, 0, 0, 0.05)',
+        blur: 'blur(8px)',
+        link: '#007aff',
+        progress: '#007aff',
+      };
+
   const lessons = [
     { id: 1, title: 'Lesson 1: Hello World in Vim', progress: 100 },
     { id: 2, title: 'Lesson 2: Insert, Append & Open Line', progress: 80 },
-    { id: 3, title: 'Lesson 3: Editing & Movement', progress: 0 },
-    { id: 4, title: 'Lesson 4: Visual Mode & Deletion', progress: 0 },
   ];
 
   return (
     <div>
       <h2 style={{ fontSize: '1.6rem', marginBottom: '1.5rem' }}>Welcome to LearnVim</h2>
-      <p style={{ marginBottom: '2rem', color: '#ccc' }}>
+      <p style={{ marginBottom: '2rem', color: darkMode ? '#ccc' : '#555' }}>
         Begin your journey toward Vim mastery — one keystroke at a time.
       </p>
 
@@ -21,12 +47,13 @@ export default function HomePage() {
           <div
             key={lesson.id}
             style={{
-              background: 'rgba(255, 255, 255, 0.05)',
-              border: '1px solid rgba(255, 255, 255, 0.1)',
-              backdropFilter: 'blur(12px)',
+              background: colors.card,
+              border: `1px solid ${colors.border}`,
+              backdropFilter: colors.blur,
+              WebkitBackdropFilter: colors.blur,
               borderRadius: '16px',
               padding: '1.25rem',
-              color: '#fff',
+              color: colors.text,
             }}
           >
             <div>
@@ -34,7 +61,7 @@ export default function HomePage() {
               <div
                 style={{
                   height: '8px',
-                  backgroundColor: '#444',
+                  backgroundColor: colors.border,
                   borderRadius: '4px',
                   overflow: 'hidden',
                   marginBottom: '0.75rem',
@@ -43,7 +70,7 @@ export default function HomePage() {
                 <div
                   style={{
                     width: `${lesson.progress}%`,
-                    backgroundColor: '#7aa2f7',
+                    backgroundColor: colors.progress,
                     height: '100%',
                     transition: 'width 0.3s ease-in-out',
                   }}
@@ -53,12 +80,10 @@ export default function HomePage() {
             <Link
               href={`/lesson/${lesson.id}`}
               style={{
-                color: '#a6e3a1',
+                color: colors.link,
                 fontWeight: '500',
                 textDecoration: 'none',
-                marginTop: 'auto',
                 display: 'inline-block',
-                marginTop: '0.5rem',
               }}
             >
               {lesson.progress === 100 ? '✅ Completed' : lesson.progress > 0 ? 'Resume →' : 'Start →'}
