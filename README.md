@@ -1,4 +1,4 @@
-# LearnVim
+# VimCraft (LearnVim)
 
 A minimal, interactive Vim tutorial website built with **Next.js**, inspired by the aesthetics of Apple's UI and the pedagogy of platforms like LeetCode.
 
