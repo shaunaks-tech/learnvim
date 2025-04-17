@@ -37,7 +37,7 @@ export default function HomePage() {
 
   return (
     <div>
-      <h2 style={{ fontSize: '1.6rem', marginBottom: '1.5rem' }}>Welcome to LearnVim</h2>
+      <h2 style={{ fontSize: '1.6rem', marginBottom: '1.5rem' }}>Welcome to VimCraft</h2>
       <p style={{ marginBottom: '2rem', color: darkMode ? '#ccc' : '#555' }}>
         Begin your journey toward Vim mastery — one keystroke at a time.
       </p>
