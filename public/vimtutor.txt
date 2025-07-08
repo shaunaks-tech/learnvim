@@ -1,0 +1,6 @@
+Lesson 1: Movement
+
+Use h, j, k, l to move the cursor.
+Try moving to the word "cursor" above.
+
+When you're ready to move on, type :wq and press ENTER.
